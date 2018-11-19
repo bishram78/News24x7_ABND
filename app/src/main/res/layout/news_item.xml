@@ -24,11 +24,12 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/news_published_date"
+                android:id="@+id/news_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/time_stamp_color"
-                tools:text="23/09/2018" />
+                android:gravity="end"
+                android:singleLine="true"
+                tools:text="Science" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -37,12 +38,11 @@
                 android:src="@drawable/ic_action_right_arrow" />
 
             <TextView
-                android:id="@+id/news_type"
+                android:id="@+id/news_published_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:singleLine="true"
-                tools:text="Science" />
+                android:textColor="@color/time_stamp_color"
+                tools:text="Published on: 23/09/2018" />
         </LinearLayout>
 
         <TextView
@@ -63,6 +63,6 @@
             android:layout_below="@id/news_headline"
             android:layout_marginTop="@dimen/author_margin_top"
             android:textColor="@android:color/white"
-            tools:text="John lee" />
+            tools:text="Written by: John lee" />
     </RelativeLayout>
 </android.support.v7.widget.CardView>
