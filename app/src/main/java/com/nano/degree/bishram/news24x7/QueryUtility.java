@@ -189,7 +189,7 @@ final class QueryUtility  {
                 GuardianNews guardianNews = new GuardianNews(mHeadline, mAuthor, mSectionName, mTimeStamp, mNewsUrl);
 
                 // Add the new {@link GuardianNews} to the list of guardianNews.
-                //guardianNewsArrayList.add(guardianNews);
+                guardianNewsArrayList.add(guardianNews);
             }
 
         } catch (JSONException e) {
