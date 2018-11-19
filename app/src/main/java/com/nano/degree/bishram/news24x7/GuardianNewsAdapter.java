@@ -25,8 +25,8 @@ public class GuardianNewsAdapter extends ArrayAdapter<GuardianNews> {
     }
 
     /**
-     * Returns a list item view that displays information about the earthquake at the given position
-     * in the list of earthquakes.
+     * Returns a list item view that displays information about the guardian news at the given position
+     * in the list of guardian news.
      */
     @NonNull
     @Override
@@ -42,7 +42,10 @@ public class GuardianNewsAdapter extends ArrayAdapter<GuardianNews> {
         GuardianNews currentGuardianNews = getItem(position);
 
         // Find the TextView with view ID news_heading in the layout.
-        TextView textViewHeadline = convertView.findViewById(R.id.news_heading);
+        TextView textViewHeadline = convertView.findViewById(R.id.news_headline);
+
+        // Find the TextView with view ID news_author in the layout.
+        TextView textViewAuthor = convertView.findViewById(R.id.news_author);
 
         // Find the TextView with view ID news_published_date.
         TextView textViewTimestamp = convertView.findViewById(R.id.news_published_date);
@@ -53,6 +56,9 @@ public class GuardianNewsAdapter extends ArrayAdapter<GuardianNews> {
         assert currentGuardianNews != null;
         // Display the Headline of the current guardian news in that TextView
         textViewHeadline.setText(currentGuardianNews.getHeadline());
+
+        // Display the Headline of the current guardian news in that TextView
+        textViewAuthor.setText(currentGuardianNews.getAuthor());
 
         String stringDate = currentGuardianNews.getTimeStamp();
 

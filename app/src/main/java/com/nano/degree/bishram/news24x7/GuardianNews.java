@@ -4,8 +4,8 @@ class GuardianNews {
     /* String for the Headline of the Guardian News */
     private String headline;
 
-    /* String for the URL for the main news of the Guardian News. */
-    private String newsUrl;
+    /* String for the Author for the main news of the Guardian News. */
+    private String author;
 
     /* String for the Section Name of the Guardian News. */
     private String sectionName;
@@ -13,18 +13,24 @@ class GuardianNews {
     /* String for the Published date of the Guardian News. */
     private String timeStamp;
 
+    /* String for the URL for the main news of the Guardian News. */
+    private String newsUrl;
+
     /**
      * Constructs a new {@link GuardianNews} object.
      *
      * @param headline is the Headline of the Guardian News.
+     * @param author is the Author of the Guardian News
      * @param newsUrl is the URL for the main news of the Guardian News.
      * @param sectionName is the Section Name of the Guardian News.
+     * @param timeStamp is the Date published of the Guardian News.
      */
-    GuardianNews(String headline, String newsUrl, String sectionName, String timeStamp) {
+    GuardianNews(String headline, String author, String sectionName, String timeStamp, String newsUrl) {
         this.headline = headline;
-        this.newsUrl = newsUrl;
+        this.author = author;
         this.sectionName = sectionName;
         this.timeStamp = timeStamp;
+        this.newsUrl = newsUrl;
     }
 
     /**
@@ -35,10 +41,10 @@ class GuardianNews {
     }
 
     /**
-     * Returns the URL for the main news of the Guardian News.
+     * Returns the Author for the main news of the Guardian News.
      */
-    String getNewsUrl() {
-        return newsUrl;
+    String getAuthor() {
+        return author;
     }
 
     /**
@@ -53,5 +59,12 @@ class GuardianNews {
      */
     String getTimeStamp() {
         return timeStamp;
+    }
+
+    /**
+     * Returns the URL for the main news of the Guardian News.
+     */
+    String getNewsUrl() {
+        return newsUrl;
     }
 }

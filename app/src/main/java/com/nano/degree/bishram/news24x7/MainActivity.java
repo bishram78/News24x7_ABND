@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements
 
     /** URL for guardian news data from the Guardian data_set */
     private static final String GUARDIAN_NEWS_REQUEST_URL =
-            "https://content.guardianapis.com/search?api-key=test";
+            "http://content.guardianapis.com/search?show-tags=contributor&api-key=test";
 
     /**
      * Constant value for the guardian loader ID. We can choose any integer.
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements
         mEmptyStateTextView = findViewById(R.id.empty_view);
         guardianNewsListView.setEmptyView(mEmptyStateTextView);
 
-        // Create a new adapter that takes an empty list of earthquakes as input
+        // Create a new adapter that takes an empty list of guardian news as input
         guardianNewsAdapter = new GuardianNewsAdapter(this, new ArrayList<GuardianNews>());
 
         // Set the adapter on the {@link ListView}
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements
         // Set empty state text to display "No news available."
         mEmptyStateTextView.setText(R.string.no_guardian_news);
 
-        // Clear the adapter of previous earthquake data
+        // Clear the adapter of previous guardian news data
         //guardianNewsAdapter.clear();
 
         // If there is a valid list of {@link GuardianNews}s, then add them to the adapter's

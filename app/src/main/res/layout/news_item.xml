@@ -1,48 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/list_item_padding">
+    card_view:cardBackgroundColor="@android:color/white"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="5dp"
+    card_view:cardUseCompatPadding="true">
 
-    <LinearLayout
-        android:id="@+id/time_stamp_container"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:padding="12dp"
+        android:background="@drawable/bkg_round_corner">
+
+        <LinearLayout
+            android:id="@+id/time_stamp_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/news_published_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/time_stamp_color"
+                tools:text="23/09/2018" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/t_nd_t_divider"
+                android:src="@drawable/ic_action_right_arrow" />
+
+            <TextView
+                android:id="@+id/news_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:singleLine="true"
+                tools:text="Science" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/news_published_date"
+            android:id="@+id/news_headline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/time_stamp_color"
-            tools:text="23/09/2018" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/t_nd_t_divider"
-            android:src="@drawable/ic_action_right_arrow" />
+            android:layout_below="@id/time_stamp_container"
+            android:layout_marginTop="@dimen/headline_margin_top"
+            android:lines="2"
+            android:textColor="@color/headline_text_color"
+            android:textSize="20sp"
+            tools:text="It is said Cleanliness is next to godliness. Everyone should wear clean clothes, drink clean water and wash himself properly." />
 
         <TextView
-            android:id="@+id/news_type"
+            android:id="@+id/news_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="end"
-            android:singleLine="true"
-            tools:text="Science" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/news_heading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/time_stamp_container"
-        android:layout_marginTop="4dp"
-        android:lines="2"
-        android:textColor="#1a1a1a"
-        android:textSize="20sp"
-        tools:text="It is said Cleanliness is next to godliness. Everyone should wear clean clothes, drink clean water and wash himself properly." />
-</RelativeLayout>
+            android:layout_below="@id/news_headline"
+            android:layout_marginTop="@dimen/author_margin_top"
+            android:textColor="@android:color/white"
+            tools:text="John lee" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

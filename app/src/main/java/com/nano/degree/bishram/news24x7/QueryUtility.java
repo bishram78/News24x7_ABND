@@ -46,7 +46,7 @@ final class QueryUtility  {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
 
-        // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
+        // Extract relevant fields from the JSON response and create a list of {@link GuardianNews}s
         // Return the list of {@link GuardianNews}s
         return extractFeatureFromJson(jsonResponse);
     }
@@ -86,14 +86,14 @@ final class QueryUtility  {
 
             // If the request was successful (response code 200),
             // then read the input stream and parse the response.
-            if (urlConnection.getResponseCode() == 200) {
+            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             } else {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the guardian news JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -153,7 +153,7 @@ final class QueryUtility  {
             // Extract the JSONArray associated with the key called "results",
             JSONArray resultsArray = responseObject.getJSONArray("results");
 
-            // For each earthquake in the earthquakeArray, create an {@link Earthquake} object
+            // For each guardian news in the guardian news, create an {@link GuardianNews} object
             for (int i = 0; i < resultsArray.length(); i++) {
 
                 // Get a single guardian news at position i within the list of guardian newses.
@@ -162,8 +162,18 @@ final class QueryUtility  {
                 // Extract the value for the key called "webTitle"
                 String mHeadline = currentGuardianNews.getString("webTitle");
 
-                // Extract the value for the key called "webUrl"
-                String mNewsUrl = currentGuardianNews.getString("webUrl");
+                // Extract the JSONArray associated with the key called "tags"
+                JSONArray tagArray = currentGuardianNews.getJSONArray("tags");
+
+                String mAuthor = "";
+
+                for (int j = 0; j < tagArray.length(); j++) {
+                    // Get a single tag at position j within the list of tags.
+                    JSONObject tagObject = tagArray.getJSONObject(j);
+
+                    // Extract the value for the key called "webTitle".
+                    mAuthor = tagObject.getString("webTitle");
+                }
 
                 // Extract the value for the key called "sectionName"
                 String mSectionName = currentGuardianNews.getString("sectionName");
@@ -171,19 +181,22 @@ final class QueryUtility  {
                 // Extract the value for the key called "webPublicationDate"
                 String mTimeStamp = currentGuardianNews.getString("webPublicationDate");
 
+                // Extract the value for the key called "webUrl"
+                String mNewsUrl = currentGuardianNews.getString("webUrl");
+
                 // Create a new {@link GuardianNews} object with the headline, newsUrl, sectionName,
                 // and  timeStamp from the JSON response.
-                GuardianNews guardianNews = new GuardianNews(mHeadline, mNewsUrl, mSectionName, mTimeStamp);
+                GuardianNews guardianNews = new GuardianNews(mHeadline, mAuthor, mSectionName, mTimeStamp, mNewsUrl);
 
                 // Add the new {@link GuardianNews} to the list of guardianNews.
-                guardianNewsArrayList.add(guardianNews);
+                //guardianNewsArrayList.add(guardianNews);
             }
 
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
-            Log.e("QueryUtility", "Problem parsing the earthquake JSON results", e);
+            Log.e("QueryUtility", "Problem parsing the guardian news JSON results", e);
         }
 
         // Return the list of guardian news.

@@ -38,7 +38,7 @@ public class NewsLoader extends android.content.AsyncTaskLoader<List<GuardianNew
             return null;
         }
 
-        // Perform the network request, parse the response, and extract a list of earthquakes.
+        // Perform the network request, parse the response, and extract a list of guardian news.
         return QueryUtility.fetchGuardianNews(mUrl);
     }
 }
