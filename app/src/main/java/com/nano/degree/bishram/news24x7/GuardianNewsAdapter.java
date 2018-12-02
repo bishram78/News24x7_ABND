@@ -58,12 +58,20 @@ public class GuardianNewsAdapter extends ArrayAdapter<GuardianNews> {
         textViewHeadline.setText(currentGuardianNews.getHeadline());
 
         // Display the Author of the current guardian news in that TextView
-        String authorText = "Written by: " + currentGuardianNews.getAuthor();
+        String author = currentGuardianNews.getAuthor();
+        String authorText = "";
+
+        if (author.isEmpty()) {
+            authorText = "By anonymous";
+        } else {
+            authorText = "By " + currentGuardianNews.getAuthor();
+        }
+
         textViewAuthor.setText(authorText);
 
         String stringDate = currentGuardianNews.getTimeStamp();
 
-        String date = "Published on: " + stringDate.substring(0, 10);
+        String date = "Posted on " + stringDate.substring(0, 10);
 
         // Display the Time stamp of the current guardian news in that TextView
         textViewTimestamp.setText(date);

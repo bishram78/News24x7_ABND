@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">News 24x7</string>
     <string name="content_description">News banner</string>
+
+    <!-- DETAIL OF THE NEWS 'THE PLACE HOLDER'. -->
     <string name="detail_news_1">
         It is said \'cleanliness is next to Godliness\'. Cleanliness determine our quality of life.
         It is at both the levels-personal hygiene and the surroundings. Everyone should wear clean
@@ -12,10 +14,55 @@
         be healthier, happier and richer.
     </string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="t_nd_t_divider">Timestamp and type divider</string>
-    <string name="no_internet_connection">No internet connection available</string>
-    <string name="no_guardian_news">No news available, please reopen\nthe app or check after some time</string>
+
+    <!-- TEXT STRING WHEN THERE IS NO INTERNET CONNECTION AVAILABLE. -->
+    <string name="no_internet_connection">No internet connection available\nPlease make sure that
+        your have turned your mobile data on or connect to wifi for connection.</string>
+
+    <!-- TEXT STRING WHEN THERE IS NO NEWS. IT APPEARS WHEN THERE IS NO MATCH IN QUERY PARAMETERS. -->
+    <string name="no_guardian_news">No news available, please reopen\nthe app or check after some
+        time</string>
+
     <string name="text_written_by">Written by:</string>
+
+    <!-- ACTIVITY SETTINGS TITLE. -->
+    <string name="settings_activity_title">News Settings</string>
+
+    <!-- SETTINGS ACTION MENU ITEM. -->
+    <string name="settings_menu_item">Settings</string>
+
+    <!-- SETTINGS ACTION MENU ITEM. -->
+    <string name="exit_menu_item">Exit</string>
+
+    <!-- PREFERENCE _SEARCH TERM_ (TAG) 'THE LABEL'. -->
+    <string name="settings_search_term_label">News tag</string>
+    <!-- PREFERENCE _SEARCH TERM_ (TAG) 'THE KEY'. -->
+    <string name="settings_search_term_key">search_term</string>
+    <!-- PREFERENCE _SEARCH TERM_ (TAG) 'THE DEFAULT VALUE'. -->
+    <string name="settings_search_term_def_value">none</string>
+
+    <!-- PREFERENCE _ORDER BY_ 'THE LABEL'. -->
+    <string name="settings_order_by_label">Order by</string>
+    <!-- PREFERENCE _ORDER BY_ 'THE KEY'. -->
+    <string name="settings_order_by_key" translatable="false">order_by</string>
+    <!-- PREFERENCE _ORDER BY_ 'THE DEFAULT VALUE'. -->
+    <string name="settings_order_by_def_value" translatable="false">
+        @string/settings_order_by_most_recent_def_value</string>
+
+    <!-- PREFERENCE _ORDER BY_ MOST RECENT 'THE LABEL'. -->
+    <string name="settings_order_by_most_recent_label">Most Recent</string>
+    <!-- PREFERENCE _ORDER BY_ MOST RECENT 'THE DEFAULT VALUE'. -->
+    <string name="settings_order_by_most_recent_def_value" translatable="false">newest</string>
+
+    <!-- PREFERENCE _ORDER BY_ OLDEST 'THE LABEL'. -->
+    <string name="settings_order_by_oldest_label">Oldest</string>
+    <!-- PREFERENCE _ORDER BY_ OLDEST 'THE DEFAULT VALUE'. -->
+    <string name="settings_order_by_oldest_def_value" translatable="false">oldest</string>
+
+    <!-- PREFERENCE _ORDER BY_ RELEVANCE 'THE LABEL'. -->
+    <string name="settings_order_by_relevance_label">Relevance</string>
+    <!-- PREFERENCE _ORDER BY_ RELEVANCE 'THE DEFAULT VALUE'. -->
+    <string name="settings_order_by_relevance_def_value" translatable="false">relevance</string>
+
 </resources>

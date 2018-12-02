@@ -4,12 +4,16 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -106,8 +110,30 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public Loader<List<GuardianNews>> onCreateLoader(int i, Bundle bundle) {
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // getString retrieves a String value from the preference.
+        String searchTermString = sharedPreferences.getString(
+                getString(R.string.settings_search_term_key),
+                getString(R.string.settings_search_term_def_value));
+
+        String orderByString = sharedPreferences.getString(
+                getString(R.string.settings_order_by_key),
+                getString(R.string.settings_order_by_def_value));
+
+        // Parse the request url
+        Uri baseUri = Uri.parse(GUARDIAN_NEWS_REQUEST_URL);
+
+        // buildUpon prepares the baseUri to append search parameters
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        // Append query parameters
+        uriBuilder.appendQueryParameter("q", searchTermString)
+        .appendQueryParameter("order-by", orderByString);
+
         // Create a new loader for the given URL
-        return new NewsLoader(this, GUARDIAN_NEWS_REQUEST_URL);
+        return new NewsLoader(this, uriBuilder.toString());
     }
 
     @Override
@@ -134,5 +160,25 @@ public class MainActivity extends AppCompatActivity implements
     public void onLoaderReset(Loader<List<GuardianNews>> loader) {
         // Loader reset, so we can clear out our existing data.
         guardianNewsAdapter.clear();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                break;
+
+            case R.id.action_exit:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

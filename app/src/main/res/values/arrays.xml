@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ARRAY LIST OF PREFERENCE _ODER BY_ (HUMAN READABLE) LABELS. -->
+    <string-array name="settings_order_by_labels">
+        <item>@string/settings_order_by_most_recent_label</item>
+        <item>@string/settings_order_by_oldest_label</item>
+        <item>@string/settings_order_by_relevance_label</item>
+    </string-array>
+
+    <!-- ARRAY LIST OF PREFERENCE _ORDER BY_ (MACHINE USABLE) VALUES. -->
+    <string-array name="settings_order_by_values">
+        <item>@string/settings_order_by_most_recent_def_value</item>
+        <item>@string/settings_order_by_oldest_def_value</item>
+        <item>@string/settings_order_by_relevance_def_value</item>
+    </string-array>
+</resources>
